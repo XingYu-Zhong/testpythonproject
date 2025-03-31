@@ -14,6 +14,13 @@ testpythonproject/
 ├── client/                # 客户端代码
 │   ├── book_client.py     # 客户端API
 │   └── cli.py             # 命令行界面
+├── tests/                 # 测试代码
+│   ├── server/            # 服务器测试
+│   │   ├── test_models.py
+│   │   └── test_controllers.py
+│   ├── client/            # 客户端测试
+│   │   └── test_book_client.py
+│   └── test_integration.py # 集成测试
 ├── requirements.txt       # 依赖管理
 └── README.md              # 项目说明
 ```
@@ -83,3 +90,36 @@ python -m client.cli interactive
 - `POST /books`: 创建新书籍
 - `PUT /books/{id}`: 更新指定ID的书籍
 - `DELETE /books/{id}`: 删除指定ID的书籍
+
+## 运行测试
+
+本项目使用 pytest 进行单元测试和集成测试。
+
+### 运行所有测试
+
+```bash
+pytest
+```
+
+### 运行特定测试
+
+```bash
+# 运行模型测试
+pytest tests/server/test_models.py
+
+# 运行控制器测试
+pytest tests/server/test_controllers.py
+
+# 运行客户端测试
+pytest tests/client/test_book_client.py
+
+# 运行集成测试
+pytest tests/test_integration.py
+```
+
+### 测试覆盖范围
+
+- **模型测试**: 测试数据模型的正确性
+- **控制器测试**: 测试业务逻辑的正确性
+- **客户端测试**: 测试客户端API的正确性
+- **集成测试**: 测试服务器和客户端的交互
